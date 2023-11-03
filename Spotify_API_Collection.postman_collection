@@ -1,0 +1,1553 @@
+{
+	"info": {
+		"_postman_id": "4a5a2c2b-6b38-48db-abab-d33d5d0c7a5c",
+		"name": "Spotify API Collection",
+		"description": "_**Plan**_\n\nThis collection aims to explore capabilities of Spotify API.  \nInvestigating documentation, endpoints, required fields and querying capabilities is a step to create similar collection with requests prepared for testing purposes.  \nOverall goal is to increase API querying and testing skills.\n\n_Note that all of the enpoints referring to user and their personal data are left out of scope for a reason._\n\n_**API Documentation**_  \n[https://developer.spotify.com/documentation/web-api](https://developer.spotify.com/documentation/web-api)\n\n_**Authorization**_\n\nSpotify requires using Bearer token with each request.  \nBefore sending any requests from this collection it's required to generate this token via\n\n`POST https://accounts.spotify.com/api/token`  \nExample of this request is inside this collection, and should be executed before any other, since it sets token from the response as a variable used in other requests.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19358296"
+	},
+	"item": [
+		{
+			"name": "Playlists",
+			"item": [
+				{
+					"name": "Featured playlists",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/browse/featured-playlists?country=US&locale=pl_PL",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"browse",
+								"featured-playlists"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "US",
+									"description": "optional, ISO 3166-1 alpha-2 country code"
+								},
+								{
+									"key": "locale",
+									"value": "pl_PL",
+									"description": "optional,  ISO 639-1 language code_ ISO 3166-1 alpha-2 country code"
+								},
+								{
+									"key": "timestamp",
+									"value": "",
+									"description": "optional, ISO 8601 format: yyyy-MM-ddTHH:mm:ss",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "optional, range 0-50, default =20",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "",
+									"description": "optional, default =0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Playlist by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/playlists/37i9dQZEVXbNG2KDcFcKOF",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"playlists",
+								"37i9dQZEVXbNG2KDcFcKOF"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Playlist tracks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/playlists/37i9dQZF1DXcBWIGoYBM5M/tracks",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"playlists",
+								"37i9dQZF1DXcBWIGoYBM5M",
+								"tracks"
+							],
+							"query": [
+								{
+									"key": "market",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category's playlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/browse/categories/rock/playlists",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"browse",
+								"categories",
+								"rock",
+								"playlists"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": null,
+									"description": "ISO 3166-1 alpha-2 country code",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": null,
+									"description": "range 0-50, default =20",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": null,
+									"description": "default =0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cover image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/playlists/{playlist_id}/images",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"playlists",
+								"{playlist_id}",
+								"images"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Albums",
+			"item": [
+				{
+					"name": "Album by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/albums/{id}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"albums",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Several albums",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/albums?ids&market",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"albums"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": null,
+									"description": "Array of strings"
+								},
+								{
+									"key": "market",
+									"value": null,
+									"description": "ISO 3166-1 alpha-2 country code"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tracks from album",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/albums/{id}/tracks",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"albums",
+								"{id}",
+								"tracks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New releases",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/browse/new-releases?country=US",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"browse",
+								"new-releases"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "US",
+									"description": "ISO 3166-1 alpha-2 country code"
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Range: 0 - 50, Default: 20",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Artists",
+			"item": [
+				{
+					"name": "Artist by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/artists/7jy3rLJdDQY21OgRLCZ9sD",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"artists",
+								"7jy3rLJdDQY21OgRLCZ9sD"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Several artists",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/artists",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"artists"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": null,
+									"description": "Array of strings",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Artist's albums",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/artists/{id}/albums",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"artists",
+								"{id}",
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Artist's top tracks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/artists/{id}/top-tracks",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"artists",
+								"{id}",
+								"top-tracks"
+							],
+							"query": [
+								{
+									"key": "market",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Related artists",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/artists/{id}/related-artists",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"artists",
+								"{id}",
+								"related-artists"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Audiobooks",
+			"item": [
+				{
+					"name": "Audiobook by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/audiobooks/{id}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"audiobooks",
+								"{id}"
+							],
+							"query": [
+								{
+									"key": "market",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Several audiobooks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/audiobooks",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"audiobooks"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": null,
+									"description": "Array of strings",
+									"disabled": true
+								},
+								{
+									"key": "market",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Audiobook chapters",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/audiobooks/{id}/chapters",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"audiobooks",
+								"{id}",
+								"chapters"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Note: Audiobooks are only available for the US, UK, Ireland, New Zealand and Australia markets**"
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Browse categories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/browse/categories?country=AU&limit=50",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"browse",
+								"categories"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "AU"
+								},
+								{
+									"key": "locale",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "50"
+								},
+								{
+									"key": "offset",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Single category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/browse/categories/{category_id}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"browse",
+								"categories",
+								"{category_id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chapters",
+			"item": [
+				{
+					"name": "Chapter by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/chapters/{id}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"chapters",
+								"{id}"
+							],
+							"query": [
+								{
+									"key": "market",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Several chapters",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/chapters",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"chapters"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": null,
+									"description": "Array of strings",
+									"disabled": true
+								},
+								{
+									"key": "market",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Note: Chapters are only available for the US, UK, Ireland, New Zealand and Australia markets.**"
+		},
+		{
+			"name": "Tracks",
+			"item": [
+				{
+					"name": "Track by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/tracks/{id}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"tracks",
+								"{id}"
+							],
+							"query": [
+								{
+									"key": "market",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Several tracks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/tracks",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"tracks"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "market",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Audio features of multiple tracks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/audio-features?ids",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"audio-features"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Audio features of a single track",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/audio-features/{id}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"audio-features",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Track audio analysis",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/audio-analysis/{id}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"audio-analysis",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recommendations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/recommendations?limit=60&market&seed_artists&seed_genres&seed_tracks&min_acousticness&max_acousticness&target_acousticness&min_danceability&max_danceability&target_danceability&min_duration_ms&max_duration_ms&target_duration_ms&min_energy&max_energy&target_energy&min_instrumentalness&max_instrumentalness&target_instrumentalness&min_key&max_key&target_key&min_liveness&max_liveness&target_liveness&min_loudness&max_loudness&target_loudness&min_mode&max_mode&target_mode&min_popularity&max_popularity&target_popularity&min_speechiness&max_speechiness&target_speechiness&min_tempo&max_tempo&target_tempo&min_time_signature&max_time_signature&target_time_signature&min_valence&max_valence&target_valence",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"recommendations"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "60",
+									"description": "1-100"
+								},
+								{
+									"key": "market",
+									"value": null
+								},
+								{
+									"key": "seed_artists",
+									"value": null,
+									"description": "At least one seed_ required, array of comma separeted artist id's, up to 5"
+								},
+								{
+									"key": "seed_genres",
+									"value": null,
+									"description": "At least one seed_ required, array of comma separeted genres, up to 5"
+								},
+								{
+									"key": "seed_tracks",
+									"value": null,
+									"description": "At least one seed_ required, array of comma separeted track id's, up to 5"
+								},
+								{
+									"key": "min_acousticness",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "max_acousticness",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "target_acousticness",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "min_danceability",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "max_danceability",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "target_danceability",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "min_duration_ms",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "max_duration_ms",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "target_duration_ms",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "min_energy",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "max_energy",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "target_energy",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "min_instrumentalness",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "max_instrumentalness",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "target_instrumentalness",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "min_key",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "max_key",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "target_key",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "min_liveness",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "max_liveness",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "target_liveness",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "min_loudness",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "max_loudness",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "target_loudness",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "min_mode",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "max_mode",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "target_mode",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "min_popularity",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "max_popularity",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "target_popularity",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "min_speechiness",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "max_speechiness",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "target_speechiness",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "min_tempo",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "max_tempo",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "target_tempo",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "min_time_signature",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "max_time_signature",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "target_time_signature",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "min_valence",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "max_valence",
+									"value": null,
+									"description": "Range: 0 - 1"
+								},
+								{
+									"key": "target_valence",
+									"value": null,
+									"description": "Range: 0 - 1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Available genres",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/recommendations/available-genre-seeds",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"recommendations",
+						"available-genre-seeds"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Available markets",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/markets",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"markets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/search?q=Miley&type=album,artist&market=PL&limit=5&offset=12&include_extrenal=audio",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Miley"
+						},
+						{
+							"key": "type",
+							"value": "album,artist",
+							"description": "Allowed values: \"album\", \"artist\", \"playlist\", \"track\", \"show\", \"episode\", \"audiobook\""
+						},
+						{
+							"key": "market",
+							"value": "PL",
+							"description": "optional, ISO 3166-1 alpha-2 country code"
+						},
+						{
+							"key": "limit",
+							"value": "5",
+							"description": "optional, range 0-50, default =20"
+						},
+						{
+							"key": "offset",
+							"value": "12",
+							"description": "optional, range 0-1000, default =0"
+						},
+						{
+							"key": "include_extrenal",
+							"value": "audio",
+							"description": "optional, only value allowed"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Access Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let accessToken = pm.response.json().access_token;\r",
+							"\r",
+							"pm.collectionVariables.set('accessToken', accessToken)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": "It's required as mentioned in docs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "{{clientId}}",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{clientSecret}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://accounts.spotify.com/api/token",
+					"protocol": "https",
+					"host": [
+						"accounts",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"api",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "clientId",
+			"value": "a0c93306c3dd4454b019bf63073b1468"
+		},
+		{
+			"key": "clientSecret",
+			"value": "96fc38d71a764e37b2bb4cd37b87232c"
+		},
+		{
+			"key": "accessToken",
+			"value": ""
+		}
+	]
+}
